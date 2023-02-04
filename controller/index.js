@@ -7,7 +7,7 @@ const addItem = (req, res, next) => {
 
     res.render('index', { todos: todos });
   } catch (error) {
-    res.render('error', { error });
+    res.render('notFound');
   }
 };
 

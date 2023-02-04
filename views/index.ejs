@@ -37,12 +37,13 @@
           <li>
             <strong>Make a veggie pie</strong>
           </li>
-          <% todos.forEach(function(todo) { %>
+          <% todos.forEach(function(todo) { %> <% if (todo.name ||
+          todo.description) { %>
           <li>
             <strong><%= todo.name %></strong><br />
             <%= todo.description %>
           </li>
-          <% }); %>
+          <% } %> <% }); %>
         </ul>
         <div class="todos-display-task">
           <form action="/removetask">
