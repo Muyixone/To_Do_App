@@ -1,0 +1,11 @@
+body {
+    background: rgb(229, 190, 190);
+    color: #555555;
+    margin-top: 20px;
+}
+
+ul {
+    display: block;
+    height: 100%;
+    width: 100%;
+}

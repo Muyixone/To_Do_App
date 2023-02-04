@@ -4,7 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
     <title>To_Do App</title>
   </head>
-  <body></body>
+  <body>
+    <div class="todos-container">
+      <header class=""><h2>My Todos</h2></header>
+      <main class="todos-main">
+        <div class="todos-addtask-container">
+          <form action="/addtask" id="add-form" method="post">
+            <div class="todos-name-field">
+              <input
+                type="text"
+                id="task-name"
+                name="name"
+                placeholder="Enter name of Task"
+              />
+            </div>
+            <div class="todos-name-field">
+              <input
+                type="text"
+                id="task-description"
+                name="description"
+                placeholder="Enter task Descrioption"
+              />
+            </div>
+            <button type="submit" class="add-task">Add Task</button>
+          </form>
+        </div>
+        <ul>
+          <% todos.forEach(function(todo) { %>
+          <li>
+            <strong><%= todo.name %></strong>
+            <%= todo.description %>
+          </li>
+          <% }); %>
+        </ul>
+        <div class="todos-display-task">
+          <form action="/removetask">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
