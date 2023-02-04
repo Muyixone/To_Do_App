@@ -2,11 +2,13 @@ const todos = [];
 
 const addItem = (req, res, next) => {
   const { name, description } = req.body;
-  todos.push({ name: name, description: description });
+  try {
+    todos.push({ name: name, description: description });
 
-  console.log(todos);
-
-  res.redirect('/');
+    res.render('index', { todos: todos });
+  } catch (error) {
+    res.render('error', { error });
+  }
 };
 
 const updatetask = (req, res, next) => {};
