@@ -10,8 +10,6 @@ const addItem = (req, res, next) => {
       day: dayjs().format('YYYY-MMM-DD h:m a'),
     });
 
-    console.log(dayjs().format('YYYY-MMM-DD h:m a'));
-
     res.render('index', {
       todos: todos,
     });
