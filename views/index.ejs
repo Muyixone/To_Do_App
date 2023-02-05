@@ -35,13 +35,14 @@
             <strong>Make a veggie pie</strong>
           </li>
           <li>
-            <strong>Make a veggie pie</strong>
+            <strong>Make a veggie pie <span>Date</span></strong>
           </li>
           <% todos.forEach(function(todo) { %> <% if (todo.name ||
           todo.description) { %>
           <li>
             <strong><%= todo.name %></strong><br />
             <%= todo.description %>
+            <span> <%= todo.day %></span>
           </li>
           <% } %> <% }); %>
         </ul>

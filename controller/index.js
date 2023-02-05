@@ -1,11 +1,20 @@
+const dayjs = require('dayjs');
 const todos = [];
 
 const addItem = (req, res, next) => {
   const { name, description } = req.body;
   try {
-    todos.push({ name: name, description: description });
+    todos.push({
+      name: name,
+      description: description,
+      day: dayjs().format('YYYY-MMM-DD h:m a'),
+    });
 
-    res.render('index', { todos: todos });
+    console.log(dayjs().format('YYYY-MMM-DD h:m a'));
+
+    res.render('index', {
+      todos: todos,
+    });
   } catch (error) {
     res.render('notFound');
   }
