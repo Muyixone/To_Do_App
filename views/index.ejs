@@ -30,25 +30,20 @@
           </div>
           <button type="submit" class="add-task">Add Task</button>
         </form>
-        <ul>
-          <li>
-            <strong>Make a veggie pie</strong>
-          </li>
-          <li>
-            <strong>Make a veggie pie <span>Date</span></strong>
-          </li>
-          <% todos.forEach(function(todo) { %> <% if (todo.name ||
-          todo.description) { %>
-          <li>
-            <strong><%= todo.name %></strong><br />
-            <%= todo.description %>
-            <span> <%= todo.day %></span>
-          </li>
-          <% } %> <% }); %>
-        </ul>
+
         <div class="todos-display-task">
           <form action="/removetask">
-            <button type="submit">Delete</button>
+            <ul>
+              <% todos.forEach(function(todo) { %> <% if (todo.name ||
+              todo.description) { %>
+              <li>
+                <strong><%= todo.name %></strong><br />
+                <%= todo.description %>
+                <span> <%= todo.day %></span>
+                <button type="submit">Delete</button>
+              </li>
+              <% } %> <% }); %>
+            </ul>
           </form>
         </div>
       </main>
