@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const taskRoute = require('./routes/index');
-const dayjs = require('dayjs');
 
 const app = express();
 const PORT = 3333;
@@ -15,15 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Set View Engine
 app.set('view engine', 'ejs');
 
-const todos = [];
+let todos = [];
+
+app.use('/todo', taskRoute);
 
 app.get('/', (req, res) => {
   res.status(200).render('index', {
     todos: todos,
   });
 });
-
-app.use('/todo', taskRoute);
 
 // ERROR HANDLER
 app.use('*', (req, res, next) => {

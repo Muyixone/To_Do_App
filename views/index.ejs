@@ -28,23 +28,27 @@
               placeholder="Enter task Descrioption"
             />
           </div>
+          
+          </div>
           <button type="submit" class="add-task">Add Task</button>
         </form>
 
         <div class="todos-display-task">
-          <form action="/removetask">
+          
             <ul>
-              <% todos.forEach(function(todo) { %> <% if (todo.name ||
-              todo.description) { %>
-              <li>
-                <strong><%= todo.name %></strong><br />
-                <%= todo.description %>
-                <span> <%= todo.day %></span>
-                <button type="submit">Delete</button>
-              </li>
-              <% } %> <% }); %>
+              <% todos.forEach(function(todo) { %> 
+                <% if (todo.name || todo.description) { %>
+                  <li>
+                    <strong><%= todo.name %></strong><br />
+                    <%= todo.description %>
+                    <span> <%= todo.day %></span>
+                    <form action="/todo/removetask/<%= todo.id %>?_method=DELETE" method="post"><button>Delete</button></form> 
+                    <!-- <%= todo.id %> -->
+                  </li>
+                <% } %> 
+              <% }); %>
             </ul>
-          </form>
+          
         </div>
       </main>
     </div>

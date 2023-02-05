@@ -7,6 +7,6 @@ router.post('/addtask', addItem);
 
 // router.put('/updatetask', updateItem);
 
-// router.delete('/deletetask', deleteItem);
+router.post('/removetask/:id', deleteItem);
 
 module.exports = router;
