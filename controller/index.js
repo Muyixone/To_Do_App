@@ -5,6 +5,12 @@ uuidv4();
 
 let todos = [];
 
+////////////////////////
+/*
+ 
+*/
+////////////////////////
+
 const addItem = (req, res, next) => {
   const { name, description } = req.body;
   try {
@@ -15,7 +21,7 @@ const addItem = (req, res, next) => {
       day: dayjs().format('YYYY-MMM-DD h:m a'),
     });
 
-    res.render('index', {
+    return res.render('index', {
       todos: todos,
     });
   } catch (error) {
@@ -23,7 +29,40 @@ const addItem = (req, res, next) => {
   }
 };
 
-const updatetask = (req, res, next) => {};
+const getUpdatePage = (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const todo = todos.find((item) => item.id == id);
+
+    if (todo != -1) {
+      return res.render('edit', {
+        todos: todos,
+        id,
+      });
+    }
+  } catch (error) {
+    res.render('notFound');
+  }
+};
+
+const updateItem = (req, res, next) => {
+  const id = req.params.id;
+  const listItem = req.body;
+
+  try {
+    let itemToUpdate = todos.findIndex((item) => item.id == id);
+
+    if (itemToUpdate != -1) {
+      todos[itemToUpdate] = listItem;
+
+      return res.render('index', {
+        todos: todos,
+      });
+    }
+  } catch (error) {
+    res.render('notFound');
+  }
+};
 
 const deleteItem = (req, res, next) => {
   const id = req.params.id;
@@ -50,6 +89,7 @@ const deleteItem = (req, res, next) => {
 
 module.exports = {
   addItem,
-  updatetask,
+  updateItem,
+  getUpdatePage,
   deleteItem,
 };
