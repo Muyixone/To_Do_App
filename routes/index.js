@@ -1,11 +1,17 @@
 const express = require('express');
 
 const router = express.Router();
-const { addItem, updateItem, deleteItem } = require('../controller/index');
+const {
+  addItem,
+  updateItem,
+  getUpdatePage,
+  deleteItem,
+} = require('../controller/index');
 
 router.post('/addtask', addItem);
 
-// router.put('/updatetask', updateItem);
+router.get('/updatetask/:id', getUpdatePage);
+router.post('/updatetask/:id', updateItem);
 
 router.post('/removetask/:id', deleteItem);
 

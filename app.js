@@ -18,15 +18,16 @@ let todos = [];
 
 app.use('/todo', taskRoute);
 
-app.get('/', (req, res) => {
-  res.status(200).render('index', {
+// Index Page
+app.get('/todo', (req, res) => {
+  return res.status(200).render('index', {
     todos: todos,
   });
 });
 
 // ERROR HANDLER
 app.use('*', (req, res, next) => {
-  res.status(404).render('notFound');
+  return res.status(404).render('notFound');
 });
 
 app.listen(PORT, () => {

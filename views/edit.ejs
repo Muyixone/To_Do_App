@@ -11,7 +11,7 @@
     <div class="todos-container">
       <header class=""><h2>My Todos</h2></header>
       <main class="todos-main">
-        <form action="/todo/addtask" id="add-form" method="post">
+        <form action="" id="add-form" method="post">
           <div class="todos-name-field">
             <input
               type="text"
@@ -33,17 +33,21 @@
 
         <div class="todos-display-task">
           <ul>
-            <% todos.forEach(function(todo) { %> <% if (todo.name ||
-            todo.description) { %>
+            <% todos.forEach(function(item) { %> <% if (item.id == id) { %>
             <li>
-              <strong><%= todo.name %></strong><br />
-              <%= todo.description %>
-              <span><sub><%= todo.day %></sub> </span>
-              <a href="/todo/updatetask/<%= todo.id %>" class="edit">
-                <span>Edit</span>
-              </a>
-              <!-- <form action="/todo/updatetask/<%= todo.id %>" method="post"><button>Edit</button></form>   -->
-              <form action="/todo/removetask/<%= todo.id %>" method="post">
+              <strong><%= item.name %></strong><br />
+              <%= item.description %>
+              <span> <%= item.day %></span>
+              <form action="/todo/updatetask/<%= item.id %>" method="post">
+                <input type="text" value="<%= item.name %>" name="name" />
+                <input
+                  type="text"
+                  value="<%= item.description %>"
+                  name="description"
+                />
+                <button>Edit</button>
+              </form>
+              <form action="/todo/removetask/<%= item.id %>" method="post">
                 <button>Delete</button>
               </form>
             </li>
