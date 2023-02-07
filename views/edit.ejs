@@ -33,7 +33,8 @@
 
         <div class="todos-display-task">
           <ul>
-            <% todos.forEach(function(item) { %> <% if (item.id == id) { %>
+            <% todos.forEach(function(item) { %> <% if (item.name ||
+            item.description) { %> <% if (item.id == id) { %>
             <li>
               <strong><%= item.name %></strong><br />
               <%= item.description %>
@@ -47,11 +48,24 @@
                 />
                 <button>Edit</button>
               </form>
+              <a href="/todo" class="cancel">Cancel</a>
+              <!-- <form action="/todo/removetask/<%= item.id %>" method="post">
+                      <button>Delete</button>
+                    </form> -->
+            </li>
+            <% } else { %>
+            <li>
+              <strong><%= item.name %></strong><br />
+              <%= item.description %>
+              <span> <%= item.day %></span>
+              <a href="/todo/updatetask/<%= item.id %>" class="edit">
+                <span></span>
+              </a>
               <form action="/todo/removetask/<%= item.id %>" method="post">
                 <button>Delete</button>
               </form>
             </li>
-            <% } %> <% }); %>
+            <% } %> <% } %> <% }); %>
           </ul>
         </div>
       </main>

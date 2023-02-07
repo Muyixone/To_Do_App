@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 uuidv4();
 
 let todos = [];
+let date = dayjs().format('YYYY-MMM-DD h:m a');
 
 ////////////////////////
 /*
@@ -18,7 +19,7 @@ const addItem = (req, res, next) => {
       name: name,
       description: description,
       id: uuidv4(),
-      day: dayjs().format('YYYY-MMM-DD h:m a'),
+      day: date,
     });
 
     return res.render('index', {
@@ -38,6 +39,7 @@ const getUpdatePage = (req, res, next) => {
       return res.render('edit', {
         todos: todos,
         id,
+        day: date,
       });
     }
   } catch (error) {
@@ -47,17 +49,17 @@ const getUpdatePage = (req, res, next) => {
 
 const updateItem = (req, res, next) => {
   const id = req.params.id;
-  const listItem = req.body;
-
+  let listItem = req.body;
+  listItem = { listItem, date };
   try {
     let itemToUpdate = todos.findIndex((item) => item.id == id);
 
     if (itemToUpdate != -1) {
+      //   console.log({ updateIt: itemToUpdate, item: listItem });
+
       todos[itemToUpdate] = listItem;
 
-      return res.render('index', {
-        todos: todos,
-      });
+      return res.render('index', { todos });
     }
   } catch (error) {
     res.render('notFound');
