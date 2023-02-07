@@ -16,7 +16,7 @@
             <% todos.forEach(function(item) { %> <% if (item.name ||
             item.description) { %> <% if (item.id == id) { %>
             <li>
-              <form action="/todo/addtask" method="post">
+              <form action="/todo/updatetask/<%= item.id %>" method="post">
                 <input
                   type="text"
                   value="<%= item.name %>"
@@ -29,20 +29,10 @@
                   name="description"
                   placeholder="Enter task Descrioption"
                 />
-                <button>Edit</button>
-              </form>
-              <a href="/todo" class="cancel"> Cancel </a>
-            </li>
-            <% } else { %>
-            <li>
-              <strong><%= item.name %></strong><br />
-              <%= item.description %>
-              <span> <%= item.day %></span>
-              <a href="/todo/updatetask/<%= item.id %>" class="edit">
-                <span></span>
-              </a>
-              <form action="/todo/removetask/<%= item.id %>" method="post">
-                <button>Delete</button>
+                <a href="/todo/updatetask/<%= item.id %>" class="cancel">
+                  <span>Cancel</span>
+                </a>
+                <button>Submit</button>
               </form>
             </li>
             <% } %> <% } %> <% }); %>

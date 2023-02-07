@@ -49,14 +49,18 @@ const getUpdatePage = (req, res, next) => {
 
 const updateItem = (req, res, next) => {
   const id = req.params.id;
-  let listItem = req.body;
-  //listItem = { listItem, date };
+
   try {
     let itemToUpdate = todos.findIndex((item) => item.id == id);
 
     if (itemToUpdate != -1) {
-      todos[itemToUpdate] = listItem;
-      return res.redirect('/todo/addtask');
+      todos[itemToUpdate] = {
+        name: req.body.name,
+        description: req.body.description,
+        id: req.params.id,
+        day: date,
+      };
+      return res.render('index', { todos });
     }
   } catch (error) {
     res.render('notFound');
