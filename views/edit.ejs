@@ -11,26 +11,6 @@
     <div class="todos-container">
       <header class=""><h2>My Todos</h2></header>
       <main class="todos-main">
-        <form action="" id="add-form" method="post">
-          <div class="todos-name-field">
-            <input
-              type="text"
-              id="task-name"
-              name="name"
-              placeholder="Enter name of Task"
-            />
-          </div>
-          <div class="todos-name-field">
-            <input
-              type="text"
-              id="task-description"
-              name="description"
-              placeholder="Enter task Descrioption"
-            />
-          </div>
-          <button type="submit" class="add-task">Add Task</button>
-        </form>
-
         <div class="todos-display-task">
           <ul>
             <% todos.forEach(function(item) { %> <% if (item.name ||
@@ -39,7 +19,7 @@
               <strong><%= item.name %></strong><br />
               <%= item.description %>
               <span> <%= item.day %></span>
-              <form action="/todo/updatetask/<%= item.id %>" method="post">
+              <form action="/todo/addtask" method="post">
                 <input type="text" value="<%= item.name %>" name="name" />
                 <input
                   type="text"
@@ -48,7 +28,7 @@
                 />
                 <button>Edit</button>
               </form>
-              <a href="/todo" class="cancel">Cancel</a>
+              <a href="/todo/addtask" class="cancel">Cancel</a>
               <!-- <form action="/todo/removetask/<%= item.id %>" method="post">
                       <button>Delete</button>
                     </form> -->
