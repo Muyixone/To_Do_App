@@ -1,12 +1,7 @@
-const {
-  addItem,
-  updateItem,
-  getUpdatePage,
-  deleteItem,
-} = require('../controller/index');
+const { addItem } = require('../controller/index');
 
-describe('Some Crud functionalities', () => {
-  test('It creates a new todo list', () => {
+describe('Create Todos Function', () => {
+  test('It creates a new todos, then renders it to the index page', () => {
     const req = {
       body: {
         name: 'To do list',
@@ -17,6 +12,15 @@ describe('Some Crud functionalities', () => {
       render: jest.fn(),
     };
     addItem(req, res);
+    expect(req.body).toEqual({
+      name: 'To do list',
+      description: 'Create a todo list app',
+    });
+    expect(res.render.mock.calls[0][1]).toEqual(
+      expect.objectContaining({
+        todos: expect.any(Array),
+      })
+    );
     expect(res.render).toHaveBeenCalledWith('index', {
       todos: [
         {

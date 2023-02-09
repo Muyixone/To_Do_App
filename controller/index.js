@@ -82,7 +82,8 @@ const deleteItem = (req, res, next) => {
     let itemToDelete = todos.findIndex((item) => item.id === id);
 
     if (itemToDelete !== -1) {
-      todos.splice(itemToDelete, 1);
+      const deletedItem = todos.splice(itemToDelete, 1);
+      console.log(deletedItem);
 
       res.render('index', {
         todos: todos,
