@@ -1,11 +1,82 @@
 body {
-    background: rgb(229, 190, 190);
-    color: #555555;
-    margin-top: 20px;
-}
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .todos-container {
+    width: 600px;
+    background-color: #fff;
+    margin: auto;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .todos-header {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .todos-main {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .todos-name-field {
+    display: flex;
+    margin: 10px 0;
+  }
+  
+  #task-name,
+  #task-description {
+    flex: 1;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+  }
+  .todos-display-task {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .todos-display-task li {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .edit {
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+    color: #4286f4;
+    text-decoration: underline;
+  }
+  
+  .btn {
+    background-color: #4286f4;
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 0.9em;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .add-task {
+    background-color: #4286f4;
+    color: #fff;
+    padding: 8px 10px;
+    font-size: 0.9em;
+    border: none;
+  }  
 
-ul {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
+

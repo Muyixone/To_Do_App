@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="todos-container">
-      <header class=""><h2>My Todos</h2></header>
+      <header class="todos-header"><h2>My Todos</h2></header>
       <main class="todos-main">
         <form action="/todo/addtask" id="add-form" method="post">
           <div class="todos-name-field">
@@ -28,7 +28,7 @@
               placeholder="Enter task Descrioption"
             />
           </div>
-          <button type="submit" class="add-task">Add Task</button>
+          <button type="submit" class="btn add-task">Add Task</button>
         </form>
 
         <div class="todos-display-task">
@@ -44,7 +44,7 @@
               </a>
               <!-- <form action="/todo/updatetask/<%= todo.id %>" method="post"><button>Edit</button></form>   -->
               <form action="/todo/removetask/<%= todo.id %>" method="post">
-                <button>Delete</button>
+                <button class="btn">Delete</button>
               </form>
             </li>
             <% } %> <% }); %>
