@@ -22,10 +22,13 @@ const addItem = (req, res, next) => {
       day: date,
     });
 
+    // return res.json({ todos });
+
     return res.render('index', {
       todos: todos,
     });
   } catch (error) {
+    // res.json({ error });
     res.render('notFound');
   }
 };
