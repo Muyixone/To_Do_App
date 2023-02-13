@@ -19,7 +19,7 @@ let todos = [];
 app.use('/todo', taskRoute);
 
 // Index Page
-app.get('/todo', (req, res) => {
+app.get('/', (req, res) => {
   return res.status(200).render('index', {
     todos: todos,
   });
